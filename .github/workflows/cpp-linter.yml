@@ -1,0 +1,21 @@
+name: C/C++ analyse
+on:
+  pull_request:
+    branches: [ develop ]
+jobs:
+  clang-tidy:
+    name: clang-tidy
+    runs-on: ubuntu-latest
+    steps:
+      - name : Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0 
+      - name : Vérification
+        uses: ZedThree/clang-tidy-review@v0.7.0
+        id: review
+        with:
+          clang_tidy_checks: 'boost-*,bugprone-*,performance-*,readability-*,portability-*,clang-analyzer-*,cppcoreguidelines-*'
+      - name : Résultats
+        if: steps.review.outputs.total_comments > 0
+        run: exit 1

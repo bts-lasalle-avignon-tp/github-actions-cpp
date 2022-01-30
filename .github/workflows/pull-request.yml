@@ -1,0 +1,16 @@
+name: Ajoute les Pull Requests au Projet
+on:
+  pull_request:
+    branches: [ develop ]
+jobs:
+  add:
+    name: Ajoute au tableau
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - name: run add board
+        uses: pritishvaidya/github-project-board-automation@0.0.1.5
+        with:
+          projects: Pendu
+          column: In progress
+          token: ${{ secrets.GITHUB_TOKEN  }}
