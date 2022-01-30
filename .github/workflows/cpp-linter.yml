@@ -1,7 +1,7 @@
 name: C/C++ analyse
 on:
   pull_request:
-    branches: [ develop ]
+    branches: [ main ]
 jobs:
   clang-tidy:
     name: clang-tidy
@@ -10,7 +10,7 @@ jobs:
       - name : Checkout
         uses: actions/checkout@v2
         with:
-          fetch-depth: 0 
+          fetch-depth: 0
       - name : Vérification
         uses: ZedThree/clang-tidy-review@v0.7.0
         id: review

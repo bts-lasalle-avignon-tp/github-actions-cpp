@@ -1,7 +1,7 @@
 name: Ajoute les Pull Requests au Projet
 on:
   pull_request:
-    branches: [ develop ]
+    branches: [ main ]
 jobs:
   add:
     name: Ajoute au tableau
@@ -11,6 +11,6 @@ jobs:
       - name: run add board
         uses: pritishvaidya/github-project-board-automation@0.0.1.5
         with:
-          projects: Pendu
+          projects: XXX
           column: In progress
           token: ${{ secrets.GITHUB_TOKEN  }}
